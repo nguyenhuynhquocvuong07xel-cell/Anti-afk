@@ -13,7 +13,7 @@ if queue and not getgenv().__CITYHOP_QUEUED then
 
     queue([[
         loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/nguyenhuynhquocvuong07xel-cell/Cityhopallgame/refs/heads/main/Hopsever",
+            "https://raw.githubusercontent.com/nguyenhuynhquocvuong07xel-cell/Anti-afk/refs/heads/main/File%20anti%20afk",
             true
         ))()
     ]])
