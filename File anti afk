@@ -48,4 +48,4 @@ task.spawn(function()
     end
 end)
 
-print("loader anti afk")
+print("loader anti afk1")
