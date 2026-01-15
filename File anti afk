@@ -1,0 +1,51 @@
+repeat task.wait() until game:IsLoaded()
+
+--==================================================
+-- QUEUE ON TELEPORT (AUTO LOAD KHI HOP)
+--==================================================
+local queue =
+    (syn and syn.queue_on_teleport)
+    or queue_on_teleport
+    or (fluxus and fluxus.queue_on_teleport)
+
+if queue and not getgenv().__CITYHOP_QUEUED then
+    getgenv().__CITYHOP_QUEUED = true
+
+    queue([[
+        loadstring(game:HttpGet(
+            "https://raw.githubusercontent.com/nguyenhuynhquocvuong07xel-cell/Cityhopallgame/refs/heads/main/Hopsever",
+            true
+        ))()
+    ]])
+end
+
+--==================================================
+-- ANTI LOAD DUP 
+--==================================================
+if getgenv().__CITYHOP_RUNNING then return end
+getgenv().__CITYHOP_RUNNING = true
+
+--==================================================
+-- hop
+--==================================================
+
+-- anti afk
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+player.Idled:Connect(function()
+    task.wait(1)
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(math.random(15, 17))
+        local char = player.Character
+        local hum = char and char:FindFirstChildOfClass("Humanoid")
+        if hum then
+            hum:ChangeState(Enum.HumanoidStateType.Jumping)
+        end
+    end
+end)
+
+print("loader anti afk")
